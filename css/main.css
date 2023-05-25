@@ -1,56 +1,118 @@
-body {
+* {
     margin: 0;
-}
-
-header {
-    margin: 0 auto;
     padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --clr: #222327;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 0.75rem black);
+}
+.navbar {
+    position: relative;
+    height: 4.375em;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.navbar ul {
     display: flex;
     justify-content: space-around;
+    width: 90%;
+}
+.navbar ul li {
+    position: relative;
+    list-style: none;
+    width: 4.375em;
+    height: 4.375em;
+    z-index: 1;
+}
+.navbar ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+.navbar ul li a img {
+    width: 1.875em;
 
 }
-
-header h1 {
-    margin: 0;
-    margin-top: 3rem;
+.navbar ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 4.375em;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: var(--clr);
+}
+.navbar ul li.active a .icon {
+    transform: translateY(-0.3em);
+}
+.navbar ul li a .text {
+    position: absolute;
+    color: var(--clr);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.navbar ul li.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+.indicator {
+    position: absolute;
+    top: -7.5%;
+    left: 7%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(180deg, #70DCD4 0%, #46A8A0 100%);
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: 0.5s;
 }
 
-.navbar {
-    margin-top: 3rem;
+/* Indicator Transitions */
+.navbar ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(0.5%);
+}
+.navbar ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(110%);
+}
+.navbar ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(5.5em * 2));
+}
+.navbar ul li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(5.5em * 3));
 }
 
-.navbar li{
-    list-style-type: none;
-}
-.nav-menu li {
-    display: inline-block;
-    margin-left: 1.5rem;
-    margin-bottom: 0;
-
-
-}
-
-nav li, nav a{
-    text-decoration: none;
-}
-
-
-@media only screen and (max-width: 960px) {
-
-    header{
-        background: #F1F1F1;
+@media screen and (max-width: 600px) {
+    header {
         position: fixed;
+
         bottom: 0;
-        height: 65px;
         width: 100%;
-
-
+    }
+    .logo {
+        display: none;
     }
 
     .navbar {
-        margin-top: 0;
-        
+
+        width: 100%;
+
     }
-
-
 }
