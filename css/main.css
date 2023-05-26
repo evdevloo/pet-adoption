@@ -7,6 +7,7 @@
 }
 :root {
     --clr: #222327;
+    --dark: #03063A
 }
 
 html, body {
@@ -16,6 +17,9 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    position: relative;
+}
 a {
     text-decoration: none;
 }
@@ -43,19 +47,13 @@ img {
 }
 
 .container {
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
 
 
-
-
 .navbar {
-    padding-right: 1em;
-    padding-left: 1em;
-
     position: relative;
     height: 4.375em;
 
@@ -65,19 +63,108 @@ img {
     border-radius: 10px;
 }
 .navbar ul {
+
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 90%;
 }
+
 .navbar ul li {
     position: relative;
     list-style: none;
 }
+ .navbar a {
+     color: white;
+ }
 
 
+.banner {
+    background-image: url(../assets/img/test-banner2.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 6.25em 0 8em 0;
+}
 
-.navbar ul li.active a .icon:first-child {
-    filter: invert(82%) sepia(13%) saturate(1233%) hue-rotate(125deg) brightness(95%) contrast(90%);
+.banner .container {
+    background-image: url(../assets/img/adoptionBanner.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 25px;
+    padding: 12.5em 9.375em 1.5625em 3.125em;
+}
+.banner h1 {
+    font-size: 36px;
+    line-height: 50px;
+    color: var(--dark);
+}
+
+.searchBar {
+    position: absolute;
+    width: 100%;
+    top: 25em;
+}
+
+.searchBar form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    padding: 25px;
+    align-items: end;
+}
+.searchBar form div:first-child {
+    display: flex;
+    flex-direction: column;
+    top: -10px;
+}
+
+.searchBar div fieldset, .searchBar div input, .searchBar div select, .searchBar div button {
+    border: none;
+}
+.searchBar div select, .searchBar div input {
+    border-radius: 25px;
+    background-color: #46A8A0;
+    color: #ffffff;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 25px;
+    opacity: 0.8;
+}
+.searchBar div input::placeholder {
+    color: #ffffff;
+}
+
+.searchBar div button {
+    color:  #ffffff;
+    background-color: #46A8A0;
+    border-radius: 25px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 25px;
+
+    transition: all .4s;
+}
+
+.searchBar div button:hover {
+    opacity: 0.8;
+}
+
+select:required:invalid {
+    color: #ffffff;
+}
+option[value=""][disabled] {
+    display: none;
+}
+option {
+    color: #ffffff;
 }
 
 
@@ -88,8 +175,9 @@ img {
 
     header {
         position: absolute;
-        background-color: #70DCD4;
+        background-color: transparent;
         width: 100%;
+        top: 1.25em;
 
     }
 
@@ -98,23 +186,23 @@ img {
         text-transform: uppercase;
         color: #fff;
         font-weight: 600;
-        margin-right: 20px;
+        margin-right: 70px;
         padding-right: 20px;
         border-right: 1px solid rgba(250, 250, 250, 0.3);
     }
+
     .navbar span img {
         display: none;
     }
-    .banner {
-        padding-top: 6.25em;
-    }
+
+
+
 
 }
 
 @media screen and (max-width: 600px) {
     header {
         position: fixed;
-
         bottom: 0;
         width: 100%;
         display: flex;
@@ -167,6 +255,10 @@ img {
         transform: translateY(-0.3em);
         opacity: 1;
     }
+
+    .navbar ul li.active a .icon:first-child {
+        filter: invert(82%) sepia(13%) saturate(1233%) hue-rotate(125deg) brightness(95%) contrast(90%);
+    }
     .navbar ul li.active a .text {
         opacity: 1;
         transform: translateY(10px);
@@ -181,5 +273,35 @@ img {
         transition: 0.5s;
         opacity: 0;
         transform: translateY(20px);
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width:540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:960px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width:1140px
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width:1320px
     }
 }

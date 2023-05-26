@@ -1,7 +1,4 @@
 const list = document.querySelectorAll(".navbar li");
-let throttled = false;
-
-
 
 function activeLink() {
     list.forEach((item) => item.classList.remove("active"));
