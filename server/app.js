@@ -11,6 +11,6 @@ app.use(cors());
 app.use(express.json())
 
 // 2. Routes
-app.use('/api/v1/reviews', routes)
+app.use('/api/v1/review', routes)
 
 export { app }

@@ -5,8 +5,8 @@ export const createReview = (req, res) => {
 
     // Create a new user in the database
     const query =
-        "INSERT INTO reviews (ID, Firstname, Lastname, Rating, CreatedAt) VALUES (?, ?, ?, ?, ?)";
-    const values = [null, data.firstName, data.lastName, data.rating, new Date()];
+        "INSERT INTO review (ID, firstName, lastName, comment, rating, createdAt) VALUES (?, ?, ?, ?, ?, ?)";
+    const values = [null, data.firstName, data.lastName, data.message, data.rating, new Date()];
 
     pool.getConnection((err, connection) => {
         if (err) {
@@ -32,7 +32,7 @@ export const createReview = (req, res) => {
             // Return the newly created user
             res.status(201).json({
                 status: "success",
-                data: { id: result.insertId, Firstname: data.Firstname , Lastname: data.lastName, Rating: data.rating },
+                data: { id: result.insertId, Firstname: data.Firstname , Lastname: data.lastName, comment: data.message, Rating: data.rating },
             });
         });
     });
@@ -43,7 +43,7 @@ export const getAllReviews = (req, res) => {
     const { firstName, lastName, rating } = req.body;
 
     // Create a new user in the database
-    const query = "SELECT * FROM reviews";
+    const query = "SELECT * FROM review";
 
     pool.getConnection((err, connection) => {
         if (err) {
@@ -75,7 +75,7 @@ export const getAllReviews = (req, res) => {
 };
 
 export const getReview = (req, res) => {
-    const query = "SELECT * FROM reviews WHERE ID = " + `"${req.params.id}"`;
+    const query = "SELECT * FROM review WHERE ID = " + `"${req.params.id}"`;
 
     pool.getConnection((err, connection) => {
         if (err) {
