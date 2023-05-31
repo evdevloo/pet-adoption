@@ -55,6 +55,7 @@ header {
     background-color: transparent;
     width: 100%;
     top: 2.5em;
+    z-index: 99;
 
 }
 
@@ -96,22 +97,24 @@ header h1 {
  }
 
 
-.banner {
+.banner, body .reviewSwipe-section {
     background-image: url("../assets/img/bannerBackground.png");
     background-position: right bottom;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 10.625em 0 8em 0;
 }
-
 .banner .container {
-    background-image: url("../assets/img/adoptionBanner.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     border-radius: 25px;
     padding: 12.5em 9.375em 4.6em 3.125em;
 }
+.banner #homeBanner{
+    background-image: url("../assets/img/adoptionBanner.png");
+}
+
 .banner h1 {
     font-size: 36px;
     line-height: 50px;
@@ -184,7 +187,7 @@ option[value=""][disabled] {
 option {
     color: #ffffff;
 }
-.swipe-section {
+.petSwipe-section, .reviewSwipe-section {
     width: 100%;
     padding: 40px 0;
     position: relative;
@@ -192,15 +195,14 @@ option {
     margin-left: auto;
 
 }
-.swipe-section .container {
+.petSwipe-section .container, .reviewSwipe-section .containerCards {
 
     overflow: hidden;
+    position: relative;
     text-align: center;
-
-
 }
 
-.swipe-section h2 {
+.petSwipe-section h2, .reviewSwipe-section h2 {
     text-align: center;
     margin-bottom: 1em;
     font-size: 36px;
@@ -213,12 +215,16 @@ option {
     height: 100%;
 }
 
-.swipe-section .container .card {
+.card {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
     background-color: #46A8A0;
+}
+
+.reviewSwipe-section .reviewSwiper .card {
+    background-color: #FFFFFF;
 }
 .card .image-content {
     padding: 25px 0;
@@ -244,19 +250,43 @@ figure {
     object-fit: cover;
     border-radius: 25px;
 }
-#button-next {
+#button-next, .reviewSwiper #button-prev{
     right: 0;
     left: auto;
 }
+.reviewSwipe-section #button-next, .reviewSwipe-section #button-prev {
+    right: 1.5em;
+    color: #FFFFFF;
+    background-color: #46A8A0;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.10);
+    opacity: 1;
+    transition: all .3s;
 
+}
 #button-prev {
     left: 0;
     right: auto;
 }
 
+
+.reviewSwiper #button-next {
+    top: 60%;
+}
+
+.reviewSwiper #button-prev{
+    top: 40%;
+}
+
+#button-next, #button-prev {
+    top: 50%;
+}
+
 #button-next, #button-prev {
     position: absolute;
-    top: 50%;
     z-index: 10;
     cursor: pointer;
     display: flex;
@@ -290,6 +320,17 @@ figure {
 }
 .swiper-pagination-bullet-active{
     background-color: #46A8A0;
+}
+.reviewSwipe .container {
+    display: flex;
+}
+.reviewSwipe-section .containerHeader {
+    align-self: center;
+}
+.containerHeader .section-heading {
+    margin-bottom: 0;
+    margin-left: 60px;
+    vertical-align: middle;
 }
 
 .info {
@@ -402,7 +443,7 @@ footer h1 {
 
 
 @media (min-width: 768px) {
-    .container, .swipe-section {
+    .container, .containerCards, .petSwipe-section {
         max-width: 45em;
     }
     header h1 {
@@ -411,36 +452,17 @@ footer h1 {
     .searchBar {
         top: 28.02em;
     }
-    .swipe-section .container {
+    .petSwipe-section .container, .reviewSwipe-section .containerCards{
+        padding: 0 10%;
         margin: 0 1.61em;
     }
-    .swipe-section .container{
-        padding: 0 10%;
-    }
 
 }
 
-@media (min-width: 992px) {
-    .container, .swipe-section {
-        max-width: 60em;
-    }
-    header h1 {
-        margin-right: 18.17%;
-    }
-    .searchBar {
-        top: 30.85em;
-    }
-    .swipe-section .container {
-        margin: 0 2.15em;
-    }
-    .swipe-section .container{
-        padding: 0;
-    }
 
-}
 @media (max-width: 992px) {
 
-    .banner {
+    .banner, .reviewSwipe-section {
         padding-top: 7.8em;
     }
     .info {
@@ -451,9 +473,28 @@ footer h1 {
     }
 
 }
+@media (min-width: 992px) {
+    .container, .containerCards, .petSwipe-section {
+        max-width: 60em;
+    }
+    .reviewSwipe-section .container {
+         display: flex;
+    }
+    header h1 {
+        margin-right: 18.17%;
+    }
+    .searchBar {
+        top: 30.85em;
+    }
+    .petSwipe-section .container, .reviewSwipe-section .containerCards{
+        padding: 0;
+        margin: 0 2.15em;
+    }
+
+}
 
 @media (min-width: 1200px) {
-    .container, .swipe-section {
+    .container, .containerCards, .petSwipe-section  {
         max-width: 71.25em;
     }
     header h1 {
@@ -466,20 +507,20 @@ footer h1 {
     .searchBar {
         top: 34.35em;
     }
-    .swipe-section .container {
+    .petSwipe-section .container, .reviewSwipe-section .containerCards {
         margin: 0 2.54em;
     }
 
 }
 
 @media (min-width: 1400px) {
-    .container, .swipe-section {
+    .container, .containerCards, .petSwipe-section {
         max-width:82.5em
     }
     header h1 {
         margin-right: 24.12%;
     }
-    .swipe-section .container {
+    .petSwipe-section .container, .reviewSwipe-section .containerCards {
         margin: 0 2.95em;
     }
 

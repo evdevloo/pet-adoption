@@ -1,4 +1,4 @@
-let swiper = new Swiper(".mySwiper", {
+let petSwiper = new Swiper(".petSwiper", {
     loop: true,
     loopFillGroupWithBlank: true,
     centeredSlides: false,
@@ -31,5 +31,29 @@ let swiper = new Swiper(".mySwiper", {
             slidesPerGroup: 3,
             spaceBetween: 30,
         },
+    },
+});
+
+let reviewSwiper = new Swiper(".reviewSwiper", {
+    loop: true,
+    loopFillGroupWithBlank: true,
+    centeredSlides: false,
+    fade: 'true',
+    grabCursor: 'true',
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+    },
+    navigation: {
+        nextEl: "#button-next",
+        prevEl: "#button-prev",
+    },
+    breakpoints:{
+        0: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 100,
+        }
     },
 });
