@@ -196,10 +196,9 @@ option {
 
 }
 .petSwipe-section .container, .reviewSwipe-section .containerCards {
-
     overflow: hidden;
-    position: relative;
     text-align: center;
+    position: relative;
 }
 
 .petSwipe-section h2, .reviewSwipe-section h2 {
@@ -250,12 +249,15 @@ figure {
     object-fit: cover;
     border-radius: 25px;
 }
-#button-next, .reviewSwiper #button-prev{
+#button-next, .reviewSwipe-section #button-prev{
     right: 0;
     left: auto;
 }
+#button-prev {
+    left: 0;
+    right: auto;
+}
 .reviewSwipe-section #button-next, .reviewSwipe-section #button-prev {
-    right: 1.5em;
     color: #FFFFFF;
     background-color: #46A8A0;
     width: 60px;
@@ -267,18 +269,15 @@ figure {
     transition: all .3s;
 
 }
-#button-prev {
-    left: 0;
-    right: auto;
+
+
+
+.reviewSwipe-section #button-next {
+    top: 52.25%;
 }
 
-
-.reviewSwiper #button-next {
-    top: 60%;
-}
-
-.reviewSwiper #button-prev{
-    top: 40%;
+.reviewSwipe-section #button-prev{
+    top: 32.25%;
 }
 
 #button-next, #button-prev {
@@ -453,7 +452,7 @@ footer h1 {
         top: 28.02em;
     }
     .petSwipe-section .container, .reviewSwipe-section .containerCards{
-        padding: 0 10%;
+        padding: 0;
         margin: 0 1.61em;
     }
 
@@ -487,7 +486,6 @@ footer h1 {
         top: 30.85em;
     }
     .petSwipe-section .container, .reviewSwipe-section .containerCards{
-        padding: 0;
         margin: 0 2.15em;
     }
 
