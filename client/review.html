@@ -112,76 +112,70 @@
       </div>
       <div class="containerHeader">
         <div class="section-heading">
-          <h6>TESTIMONIALS</h6>
+          <h6>Reviews</h6>
           <h2>What they say about us?</h2>
-          <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio, templatemo gallery, templatemo blue color, etc.</p>
+          <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio
+            , templatemo gallery
+            , templatemo blue color
+            , etc.</p>
+          <div>
+            <button onclick="reviewDialog.showModal()"><span>Leave a review</span></button>
+          </div>
         </div>
       </div>
     </div>
-
-
-
   </section>
 
-  <section>
-  <form id="myVerySpecialForm" action="#" novalidate>
 
-    <h1>Download de usertesting research paper</h1>
-    <div class="errorSummary"
-         role="group"
-         aria-labelledby="errorSummary-heading"
-         tabindex="-1">
-      <h2 id="errorSummary-heading">Er is een probleem</h2>
-      <ul>
+  <dialog id="reviewDialog">
+    <form id="reviewForm" action="#" novalidate>
 
-        <!-- Alle andere errors -->
-      </ul>
-    </div>
+      <h1>Leave a review</h1>
 
+      <div>
+        <label for="firstname">
+          <span class="field-label">Voornaam</span>
+          <!-- <span class="field-hint">Voornaam</span> -->
+        </label>
+        <input type="text"  name="firstname" id="firstname" autocomplete="given-name" placeholder="Voornaam" required autofocus tabindex="0">
+      </div>
 
-    <div>
-      <label for="firstname">
-        <span class="field-label">Voornaam</span>
-        <!-- <span class="field-hint">Voornaam</span> -->
-      </label>
-      <input type="text"  name="firstname" id="firstname" autocomplete="given-name" required autofocus tabindex="0">
-    </div>
+      <div>
+        <label for="lastname">
+          <span class="field-label">Naam</span>
+        </label>
+        <input type="text" name="lastname" id="lastname" autocomplete="family-name" placeholder="Naam" required>
+      </div>
 
-    <div>
-      <label for="lastname">
-        <span class="field-label">Naam</span>
-      </label>
-      <input type="text" name="lastname" id="lastname" autocomplete="family-name" required>
-    </div>
+      <div>
+        <label for="message">
+          <span class="field-label">Message</span>
+        </label>
+        <textarea name="message" id="message" placeholder="Your Message"></textarea>
+      </div>
 
-    <div>
-      <label for="message">
-        <span class="field-label">message</span>
-      </label>
-      <textarea name="message" id="message" placeholder="Your Message"></textarea>
-    </div>
+      <div>
+        <label for="score">
+          <span class="field-label">Score</span>
+        </label>
+        <input type="text" name="score" id="score" required>
+      </div>
 
-    <div>
-      <label for="score">
-        <span class="field-label">score</span>
-      </label>
-      <input type="text" name="score" id="score" required>
-    </div>
+      <div class="checkbox">
+        <input type="checkbox" id="privacy" name="privacy" required>
+        <label for="privacy">
+                      <span class="field-label">Ik ga akkoord met het verwerken van mijn gegevens zoals aangegeven in het privacybeleid <abbr
+                              title="required">*</abbr>
+                      </span>
+        </label>
+      </div>
 
-    <div class="checkbox">
-      <input type="checkbox" id="privacy" name="privacy" required>
-      <label for="privacy">
-                    <span class="field-label">Ik ga akkoord met het verwerken van mijn gegevens zoals aangegeven in het privacybeleid <abbr
-                            title="required">*</abbr>
-                    </span>
-      </label>
-    </div>
+      <div>
+        <button type="submit">send your review</button>
+      </div>
+    </form>
+  </dialog>
 
-    <div>
-      <button type="submit">send your review</button>
-    </div>
-  </form>
-</section>
   <section id="reviews">
   <div class="container">
     <div id="eventBox">
@@ -190,10 +184,41 @@
   </div>
 </section>
 
+  <footer>
+    <div class="container">
+      <div class="sitemap">
+        <h1>
+          <a class="logo" href="..">AdoPet</a>
+        </h1>
+        <ul>
+          <li class="active">
+            <a href="#">
+              <span class="text">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="text">Adopt</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="text">Review</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="text">Account</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="main.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="js/swiper.js"></script>
-
-  <script src="reviews.js"></script>
+  <script  type="module" src="./main.js"></script>
 </body>
 </html>

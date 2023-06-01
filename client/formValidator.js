@@ -41,7 +41,7 @@ export class FormValidator {
         if (!this.validate()){
             event.preventDefault();
             event.stopImmediatePropagation();
-            this.showSummary();
+            //this.showSummary();
             this.showInlineErrors();
         }
     }

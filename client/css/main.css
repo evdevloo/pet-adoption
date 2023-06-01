@@ -26,7 +26,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #1e1e1e;
+    color: var(--dark);
     margin-top: 0;
     margin-bottom: 0;
     font-weight: 700;
@@ -49,7 +49,10 @@ p {
 
 button {
     cursor: pointer;
+
 }
+
+
 header {
     position: absolute;
     background-color: transparent;
@@ -144,38 +147,42 @@ header h1 {
     top: -10px;
 }
 
-.searchBar div fieldset, .searchBar div input, .searchBar div select, .searchBar div button {
+.searchBar div fieldset, .searchBar div input, .searchBar div select, button {
     border: none;
 }
 .searchBar div select, .searchBar div input {
     border-radius: 25px;
     background-color: #46A8A0;
-    color: #ffffff;
     width: 100%;
     height: 50px;
     font-size: 14px;
     font-weight: 600;
     padding: 0 25px;
     opacity: 0.8;
+    color: #ffffff;
 }
 .searchBar div input::placeholder {
     color: #ffffff;
 }
 
-.searchBar div button {
-    color:  #ffffff;
-    background-color: #46A8A0;
+button {
     border-radius: 25px;
     height: 50px;
     font-size: 14px;
     font-weight: 600;
     padding: 0 25px;
-
     transition: all .4s;
 }
 
+.searchBar div button {
+    color:  #ffffff;
+    background-color: #46A8A0;
+}
+
 .searchBar div button:hover {
-    opacity: 0.8;
+    opacity: 1;
+    color:  #46A8A0;
+    background-color: #ffffff;
 }
 
 select:required:invalid {
@@ -189,22 +196,39 @@ option {
 }
 .petSwipe-section, .reviewSwipe-section {
     width: 100%;
-    padding: 40px 0;
+    padding: 2.5em 0;
     position: relative;
     margin-right: auto;
     margin-left: auto;
 
 }
+.petSwipe-section .container {
+    padding: 0 1.875em;
+}
+.containerCards {
+    width: 60%;
+}
 .petSwipe-section .container, .reviewSwipe-section .containerCards {
-    overflow: hidden;
     text-align: center;
     position: relative;
 }
 
-.petSwipe-section h2, .reviewSwipe-section h2 {
+.reviewSwiper, .petSwiper  {
+    overflow: hidden;
+}
+.reviewSwipe-section .container {
+    display: flex;
+}
+
+.petSwipe-section h2 {
     text-align: center;
     margin-bottom: 1em;
     font-size: 36px;
+}
+.reviewSwipe-section h2 {
+    font-size: 36px;
+    margin: 0.625em 0;
+    line-height: 44px;
 }
 
 .cards {
@@ -214,7 +238,7 @@ option {
     height: 100%;
 }
 
-.card {
+.card, #eventBox div {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
@@ -222,7 +246,7 @@ option {
     background-color: #46A8A0;
 }
 
-.reviewSwipe-section .reviewSwiper .card {
+.reviewSwipe-section .reviewSwiper .card, #eventBox div {
     background-color: #FFFFFF;
 }
 .card .image-content {
@@ -257,7 +281,7 @@ figure {
     left: 0;
     right: auto;
 }
-.reviewSwipe-section #button-next, .reviewSwipe-section #button-prev {
+#button-next, #button-prev {
     color: #FFFFFF;
     background-color: #46A8A0;
     width: 60px;
@@ -280,8 +304,12 @@ figure {
     top: 32.25%;
 }
 
+.reviewSwipe-section #button-next, .reviewSwipe-section #button-prev {
+    right: -1.25em;
+}
+
 #button-next, #button-prev {
-    top: 50%;
+    top: 42.25%;
 }
 
 #button-next, #button-prev {
@@ -313,6 +341,37 @@ figure {
     letter-spacing: 0;
     line-height: 1;
 }
+#button-prev:hover, #button-next:hover {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.reviewSwipe-section button {
+    margin-top: 1.5em;
+    position: relative;
+}
+
+.reviewSwipe-section button span {
+    color: #FFFFFF;
+    mix-blend-mode: exclusion;
+}
+
+.reviewSwipe-section button::before {
+    content: "";
+    border-radius: 50px;
+    width: 35%;
+    background: var(--dark);
+    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.reviewSwipe-section button:hover::before {
+    background: var(--dark);
+    width: 100%;
+}
+
 .swiper-pagination-bullet{
     background-color: #70DCD4;
     opacity: 1;
@@ -328,7 +387,7 @@ figure {
 }
 .containerHeader .section-heading {
     margin-bottom: 0;
-    margin-left: 60px;
+    margin-left: 3.125em;
     vertical-align: middle;
 }
 
@@ -340,6 +399,77 @@ figure {
     background-color: #46A8A0;
     border-radius: 40px;
 
+}
+
+dialog#reviewDialog {
+    border-radius: 25px;
+    margin: auto;
+    padding: 1em 2em;
+    max-width: 31.25em;
+    background-color: #46A8A0;
+    border: none;
+}
+
+::backdrop {
+    background-color: rgb(0,0,0, 0.4);
+}
+
+dialog#reviewDialog h1 {
+    border-bottom: 1px solid #FFFFFF;
+    font-size: 3em;
+    font-weight: 600;
+    margin: 0 0 1em 0;
+}
+
+dialog#reviewDialog h1, dialog#reviewDialog label span {
+    color: #FFFFFF;
+}
+
+dialog#reviewDialog form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 1.75em;
+}
+dialog#reviewDialog form div.checkbox{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5em;
+
+}
+dialog#reviewDialog form div.checkbox label span {
+    font-size: 1em;
+}
+
+dialog#reviewDialog form div:last-of-type {
+    margin:  1.75em 0 0.8em 0;
+
+}
+
+dialog#reviewDialog label > span.field-label {
+    display: block;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+dialog#reviewDialog div input, dialog#reviewDialog textarea {
+    background-color: rgba(249, 235, 255, 0.15);
+    border-radius: 25px;
+    border: none;
+    font-weight: 300;
+    height: 50px;
+    padding: 0 20px;
+    color: #FFFFFF;
+}
+
+dialog#reviewDialog div input::placeholder, dialog#reviewDialog textarea::placeholder {
+    color: #FFFFFF;
+}
+
+dialog#reviewDialog div textarea{
+    resize: vertical;
+    height: 6.25em;
+    padding: 20px;
 }
 
 .accordion {
@@ -442,7 +572,7 @@ footer h1 {
 
 
 @media (min-width: 768px) {
-    .container, .containerCards, .petSwipe-section {
+    .container, .containerCards {
         max-width: 45em;
     }
     header h1 {
@@ -451,10 +581,7 @@ footer h1 {
     .searchBar {
         top: 28.02em;
     }
-    .petSwipe-section .container, .reviewSwipe-section .containerCards{
-        padding: 0;
-        margin: 0 1.61em;
-    }
+
 
 }
 
@@ -473,26 +600,22 @@ footer h1 {
 
 }
 @media (min-width: 992px) {
-    .container, .containerCards, .petSwipe-section {
+    .container, .containerCards {
         max-width: 60em;
     }
-    .reviewSwipe-section .container {
-         display: flex;
-    }
+
     header h1 {
         margin-right: 18.17%;
     }
     .searchBar {
         top: 30.85em;
     }
-    .petSwipe-section .container, .reviewSwipe-section .containerCards{
-        margin: 0 2.15em;
-    }
+
 
 }
 
 @media (min-width: 1200px) {
-    .container, .containerCards, .petSwipe-section  {
+    .container, .containerCards  {
         max-width: 71.25em;
     }
     header h1 {
@@ -505,21 +628,15 @@ footer h1 {
     .searchBar {
         top: 34.35em;
     }
-    .petSwipe-section .container, .reviewSwipe-section .containerCards {
-        margin: 0 2.54em;
-    }
 
 }
 
 @media (min-width: 1400px) {
-    .container, .containerCards, .petSwipe-section {
+    .container, .containerCards {
         max-width:82.5em
     }
     header h1 {
         margin-right: 24.12%;
-    }
-    .petSwipe-section .container, .reviewSwipe-section .containerCards {
-        margin: 0 2.95em;
     }
 
 }

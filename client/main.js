@@ -1,11 +1,13 @@
 "use strict";
 import {FormValidator} from './formValidator.js';
-
+import {data} from "./reviews.js";
 
 (function() {
 
+    data();
+
     // selecteer je form
-    const form = document.querySelector('#myVerySpecialForm');
+    const form = document.querySelector('#reviewForm');
     if (!form) {
         return;
     }
@@ -64,7 +66,7 @@ import {FormValidator} from './formValidator.js';
 
         console.log('Submit gelukt! Geen errors!')
 
-        let res = await fetch("http://localhost:3000/api/v1/review", {
+        let res = await fetch("http://localhost:3000/", {
             method: "POST",
             body: JSON.stringify({
                 firstName: document.getElementById("firstname").value,
@@ -78,13 +80,13 @@ import {FormValidator} from './formValidator.js';
         });
 
         if (res.ok) {
+            document.querySelector('dialog#reviewDialog').close();
+            document.querySelector('#eventBox').innerHTML = "";
+            data();
 
         } else {
             alert("Something went wrong while submitting the form!");
         }
-
-        // herstel het formulier in zijn oorspronkelijke staat
-        // wat is this? 🤔
     })
 })()
 
