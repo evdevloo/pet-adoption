@@ -50,7 +50,6 @@ div.radiobutton {
 div.checkbox {
   display: flex;
   flex-direction: row;
-  align-items: top;
   gap: 0.5em;
   margin-bottom: 0.5em;
 }
@@ -77,7 +76,7 @@ label > span.field-error, legend > span.field-error {
 /* hints or explanation for the user */
 label > span.field-hint, legend > span.field-hint {
   display: inline-block;
-  margin: 0.25em 0em;
+  margin: 0.25em 0;
   color: #666;
 }
 
