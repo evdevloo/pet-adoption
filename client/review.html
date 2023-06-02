@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>review</title>
-  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <!--<link rel="stylesheet" href="style.css">-->
   <link href="css/main.css" rel="stylesheet" />
 
@@ -14,11 +13,11 @@
     <div class="container">
       <nav class="navbar">
         <h1>
-          <a class="logo" href="index.html">AdoPet</a>
+          <a class="logo" href="./index.html">AdoPet</a>
         </h1>
         <ul>
           <li class="active">
-            <a href="#">
+            <a href="./index.html">
               <span class="text">Home</span>
             </a>
           </li>
@@ -41,148 +40,148 @@
       </nav>
     </div>
   </header>
-  <section class="reviewSwipe-section">
-    <div class="container">
-      <div class="containerCards">
-        <div class="reviewSwiper">
-          <div class="swiper-wrapper cards">
-            <div class="swiper-slide card">
-              <div class="image-content">
-                <figure class="card-image">
-                  <img src="assets/img/dog1.png " alt="" class="card-img">
-                </figure>
-              </div>
+  <main>
+    <section class="reviewSwipe-section">
+      <div class="container">
+        <div class="containerCards">
+          <div class="reviewSwiper">
+            <div class="swiper-wrapper cards">
+              <div class="swiper-slide card">
+                <div class="image-content">
+                  <figure class="card-image">
+                    <img src="assets/img/dog1.png " alt="" class="card-img">
+                  </figure>
+                </div>
 
-              <div class="card-content">
-                <h3 class="name">name pet</h3>
-                <p>
-                  race1
-                </p>
-                <p>
-                  location
-                </p>
+                <div class="card-content">
+                  <h3 class="name">name pet</h3>
+                  <p>
+                    race1
+                  </p>
+                  <p>
+                    location
+                  </p>
+                </div>
+                <a class="overlay-link" href="#"></a>
               </div>
-              <a class="overlay-link" href="#"></a>
+              <div class="swiper-slide card">
+                <div class="image-content">
+                  <figure class="card-image">
+                    <img src="assets/img/dog2.png " alt="" class="card-img">
+                  </figure>
+                </div>
+
+                <div class="card-content">
+                  <h3 class="name">name pet</h3>
+                  <p>
+                    race
+                  </p>
+                  <p>
+                    location
+                  </p>
+                </div>
+                <a class="overlay-link" href="#"></a>
+              </div>
+              <div class="swiper-slide card">
+                <div class="image-content">
+                  <figure class="card-image">
+                    <img src="assets/img/dog3.png " alt="" class="card-img">
+                  </figure>
+                </div>
+
+                <div class="card-content">
+                  <h3 class="name">name pet</h3>
+                  <p>
+                    race
+                  </p>
+                  <p>
+                    location
+                  </p>
+                </div>
+                <a class="overlay-link" href="#"></a>
+              </div>
             </div>
-            <div class="swiper-slide card">
-              <div class="image-content">
-                <figure class="card-image">
-                  <img src="assets/img/dog2.png " alt="" class="card-img">
-                </figure>
-              </div>
 
-              <div class="card-content">
-                <h3 class="name">name pet</h3>
-                <p>
-                  race
-                </p>
-                <p>
-                  location
-                </p>
-              </div>
-              <a class="overlay-link" href="#"></a>
-            </div>
-            <div class="swiper-slide card">
-              <div class="image-content">
-                <figure class="card-image">
-                  <img src="assets/img/dog3.png " alt="" class="card-img">
-                </figure>
-              </div>
+          </div>
+          <div class="navigation">
+            <div class="swiper-navBtn" id="button-next"></div>
+            <div class="swiper-navBtn" id="button-prev"></div>
 
-              <div class="card-content">
-                <h3 class="name">name pet</h3>
-                <p>
-                  race
-                </p>
-                <p>
-                  location
-                </p>
-              </div>
-              <a class="overlay-link" href="#"></a>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="containerHeader">
+          <div class="section-heading">
+            <h6>Reviews</h6>
+            <h2>What they say about us?</h2>
+            <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio
+              , templatemo gallery
+              , templatemo blue color
+              , etc.</p>
+            <div>
+              <button onclick="reviewDialog.showModal()"><span>Leave a review</span></button>
             </div>
           </div>
-
-        </div>
-        <div class="navigation">
-          <div class="swiper-navBtn" id="button-next"></div>
-          <div class="swiper-navBtn" id="button-prev"></div>
-
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="containerHeader">
-        <div class="section-heading">
-          <h6>Reviews</h6>
-          <h2>What they say about us?</h2>
-          <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio
-            , templatemo gallery
-            , templatemo blue color
-            , etc.</p>
-          <div>
-            <button onclick="reviewDialog.showModal()"><span>Leave a review</span></button>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <dialog id="reviewDialog">
+      <form id="reviewForm" action="#" novalidate>
 
+        <h1>Leave a review</h1>
 
-  <dialog id="reviewDialog">
-    <form id="reviewForm" action="#" novalidate>
+        <div>
+          <label for="firstname">
+            <span class="field-label">Voornaam</span>
+            <!-- <span class="field-hint">Voornaam</span> -->
+          </label>
+          <input type="text"  name="firstname" id="firstname" autocomplete="given-name" placeholder="Voornaam" required autofocus tabindex="0">
+        </div>
 
-      <h1>Leave a review</h1>
+        <div>
+          <label for="lastname">
+            <span class="field-label">Naam</span>
+          </label>
+          <input type="text" name="lastname" id="lastname" autocomplete="family-name" placeholder="Naam" required>
+        </div>
 
-      <div>
-        <label for="firstname">
-          <span class="field-label">Voornaam</span>
-          <!-- <span class="field-hint">Voornaam</span> -->
-        </label>
-        <input type="text"  name="firstname" id="firstname" autocomplete="given-name" placeholder="Voornaam" required autofocus tabindex="0">
-      </div>
+        <div>
+          <label for="message">
+            <span class="field-label">Message</span>
+          </label>
+          <textarea name="message" id="message" placeholder="Your Message"></textarea>
+        </div>
 
-      <div>
-        <label for="lastname">
-          <span class="field-label">Naam</span>
-        </label>
-        <input type="text" name="lastname" id="lastname" autocomplete="family-name" placeholder="Naam" required>
-      </div>
+        <div>
+          <label for="score">
+            <span class="field-label">Score</span>
+          </label>
+          <input type="text" name="score" id="score" required>
+        </div>
 
-      <div>
-        <label for="message">
-          <span class="field-label">Message</span>
-        </label>
-        <textarea name="message" id="message" placeholder="Your Message"></textarea>
-      </div>
-
-      <div>
-        <label for="score">
-          <span class="field-label">Score</span>
-        </label>
-        <input type="text" name="score" id="score" required>
-      </div>
-
-      <div class="checkbox">
-        <input type="checkbox" id="privacy" name="privacy" required>
-        <label for="privacy">
+        <div class="checkbox">
+          <input type="checkbox" id="privacy" name="privacy" required>
+          <label for="privacy">
                       <span class="field-label">Ik ga akkoord met het verwerken van mijn gegevens zoals aangegeven in het privacybeleid <abbr
                               title="required">*</abbr>
                       </span>
-        </label>
+          </label>
+        </div>
+
+        <div>
+          <button type="submit">send your review</button>
+        </div>
+      </form>
+    </dialog>
+    <section id="reviews">
+      <div class="container">
+        <div id="eventBox">
+
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <button type="submit">send your review</button>
-      </div>
-    </form>
-  </dialog>
-
-  <section id="reviews">
-  <div class="container">
-    <div id="eventBox">
-
-    </div>
-  </div>
-</section>
 
   <footer>
     <div class="container">
