@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adopt a pet</title>
+    <link href="css/main.css" rel="stylesheet" />
+
+</head>
+<body id="adoptPage">
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <h2>
+                    <a class="logo" href="./index.html">AdoPet</a>
+                </h2>
+                <ul>
+                    <li class="active">
+                        <a href="./index.html">
+                            <span class="text">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./adopt.html">
+                            <span class="text">Adopt</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./review.html">
+                            <span class="text">Review</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <h2>Find your best friend here</h2>
+        <div class="container">
+            <div class="searchContainer">
+                <form id = "adoptForm" action="#">
+                    <div class="type">
+                        <label for="type">Type</label>
+                        <select id="type" name="type" required>
+                            <option value="" disabled selected>choose type</option>
+                            <option value="Cat">cat</option>
+                            <option value="Dog">dog</option>
+                        </select>
+                    </div>
+                    <div class="breed">
+                        <label for="breed">Breed</label>
+                        <select id="breed" name="breed" required>
+                            <option value="" disabled selected>choose breed</option>
+                        </select>
+                    </div>
+                    <div class="gender">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>choose gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                            <option value="male,female">doesn't matter</option>
+                        </select>
+                    </div>
+                    <div class="age">
+                        <label for="age">Age</label>
+                        <select id="age" name="age" required>
+                            <option value="" disabled selected>choose age</option>
+                            <option value="baby" >Baby</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="senior">Senior</option>
+                            <option value="baby, young, adult, senior">doesn't matter</option>
+                        </select>
+                    </div>
+
+                    <div class="button">
+                        <button type="submit">send your review</button>
+                    </div>
+                </form>
+            </div>
+            <div class="petContainer">
+
+            </div>
+        </div>
+
+
+    </section>
+    <footer>
+        <div class="container">
+            <div class="sitemap">
+                <h2>
+                    <a class="logo" href="..">AdoPet</a>
+                </h2>
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <span class="text">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="text">Adopt</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="text">Review</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="text">Account</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script  type="module" src="js/AdoptMain.js"></script>
+    <script type="module" src="js/searchBar.js"></script>
+</body>
+</html>

@@ -18,7 +18,6 @@ export const createReview = (req, res) => {
         }
 
         connection.query(query, values, (error, result) => {
-            console.log(query);
             connection.release();
 
             if (error) {
@@ -31,7 +30,7 @@ export const createReview = (req, res) => {
 
             // Return the newly created user
             res.status(201).json({
-                status: "success",
+                status: "succes",
                 data: { id: result.insertId, Firstname: data.Firstname , Lastname: data.lastName, comment: data.message, Rating: data.rating },
             });
         });
@@ -107,7 +106,36 @@ export const getReview = (req, res) => {
 };
 
 
-export const updateReview = (req, res) => {
+export const randomReview = (req, res) => {
+    console.log(res);
+    const query = "SELECT * FROM review ORDER BY RAND() limit " + `${req.params.count}`;
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error("Error getting database connection:", err);
+            return res.status(500).json({
+                status: "error",
+                message: "Internal Server Error",
+            });
+        }
+
+        connection.query(query, (error, result) => {
+            connection.release();
+
+            if (error) {
+                console.error("Error retrieving data:", error);
+                return res.status(500).json({
+                    status: "error",
+                    message: "Internal Server Error",
+                });
+            }
+
+            // Return the newly created user
+            res.status(201).json({
+                status: "success",
+                data: result,
+            });
+        });
+    });
 
 }
-export const deleteReview = (req, res) => {}

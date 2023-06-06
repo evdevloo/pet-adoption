@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>review</title>
-  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-  <!--<link rel="stylesheet" href="style.css">-->
-  <link href="css/main.css" rel="stylesheet" />
+
+  <link href="css/main.css" rel="stylesheet">
 
 </head>
-<body>
+<body id="reviewPage">
   <header>
     <div class="container">
       <nav class="navbar">
-        <h1>
+        <h2>
           <a class="logo" href="./index.html">AdoPet</a>
-        </h1>
+        </h2>
         <ul>
           <li>
             <a href="./index.html">
@@ -23,7 +22,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./adopt.html">
               <span class="text">Adopt</span>
             </a>
           </li>
@@ -32,104 +31,44 @@
               <span class="text">Review</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <span class="text">Account</span>
-            </a>
-          </li>
         </ul>
       </nav>
     </div>
   </header>
   <main>
-    <section class="reviewSwipe-section">
+    <div class="reviewSwipe-section">
       <div class="container">
         <div class="containerCards">
           <div class="reviewSwiper">
             <div class="swiper-wrapper cards">
-              <div class="swiper-slide card">
-                <div class="image-content">
-                  <figure class="card-image">
-                    <img src="assets/img/dog1.png " alt="" class="card-img">
-                  </figure>
-                </div>
 
-                <div class="card-content">
-                  <h3 class="name">name pet</h3>
-                  <p>
-                    race1
-                  </p>
-                  <p>
-                    location
-                  </p>
-                </div>
-                <a class="overlay-link" href="#"></a>
-              </div>
-              <div class="swiper-slide card">
-                <div class="image-content">
-                  <figure class="card-image">
-                    <img src="assets/img/dog2.png " alt="" class="card-img">
-                  </figure>
-                </div>
-
-                <div class="card-content">
-                  <h3 class="name">name pet</h3>
-                  <p>
-                    race
-                  </p>
-                  <p>
-                    location
-                  </p>
-                </div>
-                <a class="overlay-link" href="#"></a>
-              </div>
-              <div class="swiper-slide card">
-                <div class="image-content">
-                  <figure class="card-image">
-                    <img src="assets/img/dog3.png " alt="" class="card-img">
-                  </figure>
-                </div>
-
-                <div class="card-content">
-                  <h3 class="name">name pet</h3>
-                  <p>
-                    race
-                  </p>
-                  <p>
-                    location
-                  </p>
-                </div>
-                <a class="overlay-link" href="#"></a>
-              </div>
             </div>
-
           </div>
           <div class="navigation">
             <div class="swiper-navBtn" id="button-next"></div>
             <div class="swiper-navBtn" id="button-prev"></div>
-
           </div>
-          <div class="swiper-pagination"></div>
         </div>
         <div class="containerHeader">
           <div class="section-heading">
             <h6>Reviews</h6>
             <h2>What they say about us?</h2>
-            <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio
-              , templatemo gallery
-              , templatemo blue color
-              , etc.</p>
+            <p>"Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
             <div>
-              <button onclick="reviewDialog.showModal()"><span>Leave a review</span></button>
+              <button><span>Leave a review</span></button>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
     <dialog id="reviewDialog">
       <form id="reviewForm" action="#" novalidate>
 
-        <h1>Leave a review</h1>
+        <h2>Leave a review</h2>
 
         <div>
           <label for="firstname">
@@ -154,13 +93,10 @@
         </div>
 
       <div>
-        <label for="score">
-          <span class="field-label">Score</span>
-        </label>
-        <input type="text" name="score" id="score" required>
-      </div>
-      <div>
         <fieldset class="ratingControl">
+          <legend>
+            <span class="field-label">Score</span>
+          </legend>
           <input type="radio" id="rating-5" name="rating" value="5">
           <label class="ratingControl-stars ratingControl-stars--5" for="rating-5">5</label>
           <input type="radio" id="rating-45" name="rating" value="4.5">
@@ -198,22 +134,22 @@
         </div>
       </form>
     </dialog>
-    <section id="reviews">
+    <div id="reviews">
       <div class="container">
         <div id="eventBox">
 
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
 
   <footer>
     <div class="container">
       <div class="sitemap">
-        <h1>
+        <h2>
           <a class="logo" href="..">AdoPet</a>
-        </h1>
+        </h2>
         <ul>
           <li class="active">
             <a href="#">
@@ -239,10 +175,8 @@
       </div>
     </div>
   </footer>
+  <script type="module" src="js/ReviewMain.js"></script>
+  <script  src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <script type="module" src="main.js"></script>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="js/swiper.js"></script>
-  <script  type="module" src="./main.js"></script>
 </body>
 </html>

@@ -6,8 +6,9 @@
     box-sizing: border-box;
 }
 :root {
-    --clr: #222327;
-    --dark: #03063A
+    --light: #EFEFEF;
+    --dark: #03063A;
+    --theme: #1d968c;
 }
 html {
     height: 100%;
@@ -21,7 +22,10 @@ html, body {
 }
 
 body {
-    background-color: #EFEFEF;;
+    background-color: var(--light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 a {
     text-decoration: none;
@@ -31,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--dark);
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 ul {
@@ -46,7 +50,6 @@ li {
 p {
     font-size: 14px;
     line-height: 28px;
-    color: #4a4a4a;
 }
 
 button {
@@ -57,18 +60,21 @@ button {
 
 header {
     position: absolute;
-    background-color: transparent;
+
     width: 100%;
     top: 2.5em;
     z-index: 99;
 
 }
+header .container {
+    background-color: var(--theme);
+}
 
-header h1 {
-    font-size: 3rem;
+header h2 {
+    font-size: 4rem;
     text-transform: uppercase;
-    color: #fff;
-    font-weight: 600;
+
+    font-weight: bolder;
     margin-right: 15%;
     padding-right: 20px;
     border-right: 1px solid rgba(250, 250, 250, 0.3);
@@ -98,16 +104,26 @@ header h1 {
     font-size: 1.6rem;
 }
  .navbar a, .sitemap a {
-     color: white;
+     color: var(--light);
  }
 
-
 .banner, body .reviewSwipe-section {
-    background-image: url("../assets/img/bannerBackground.png");
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
+    position: relative;
     padding: 10.625em 0 8em 0;
+}
+
+.banner::before, .reviewSwipe-section::before, #adoptPage header::before, #detailPage header::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: var(--theme);
+    border-bottom-right-radius: 200px;
+    box-shadow: 0 0 20px rgba(0,0 ,0 ,0.1);
 }
 .banner .container {
     background-repeat: no-repeat;
@@ -120,10 +136,10 @@ header h1 {
     background-image: url("../assets/img/adoptionBanner.png");
 }
 
-.banner h1 {
+.banner h2 {
     font-size: 36px;
     line-height: 50px;
-    color: #ffffff;
+    color: var(--light);
 }
 
 .searchBar {
@@ -132,16 +148,31 @@ header h1 {
     top: 25em;
 }
 
+.searchBar label, #adoptForm label{
+    font-weight: bold;
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 0.25em;
+    color: var(--theme);
+}
+
+#adoptForm label {
+    color: var(--light);
+}
+
 .searchBar form {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #ffffff;
+    background-color: var(--light);
     display: flex;
     justify-content: space-between;
     border-radius: 25px;
-    padding: 25px;
+    padding: 0.78125em 1.5625em 1.5625em 1.5625em;
     align-items: end;
+}
+.searchBar form div {
+    width: 33%;
 }
 .searchBar form div:first-child {
     display: flex;
@@ -152,49 +183,51 @@ header h1 {
 .searchBar div fieldset, .searchBar div input, .searchBar div select, button {
     border: none;
 }
-.searchBar div select, .searchBar div input {
+div select, div input {
     border-radius: 25px;
-    background-color: #46A8A0;
-    width: 100%;
+    background-color: var(--theme);
     height: 50px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
     padding: 0 25px;
-    opacity: 0.8;
-    color: #ffffff;
+    color: var(--light);
+}
+
+.searchBar select#breed {
+    width: 100%;
 }
 .searchBar div input::placeholder {
-    color: #ffffff;
+    color: var(--light);
 }
 
 button {
     border-radius: 25px;
     height: 50px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
     padding: 0 25px;
     transition: all .4s;
 }
 
 .searchBar div button {
-    color:  #ffffff;
-    background-color: #46A8A0;
+    color:  var(--light);
+    background-color: var(--theme);
+    width: 100%;
 }
 
 .searchBar div button:hover {
     opacity: 1;
-    color:  #46A8A0;
-    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 select:required:invalid {
-    color: #ffffff;
+    color: var(--light);
 }
 option[value=""][disabled] {
     display: none;
 }
 option {
-    color: #ffffff;
+    color: var(--light);
 }
 .petSwipe-section, .reviewSwipe-section {
     width: 100%;
@@ -210,9 +243,13 @@ option {
 .containerCards {
     width: 60%;
 }
-.petSwipe-section .container, .reviewSwipe-section .containerCards {
+.petSwipe-section .container {
     text-align: center;
     position: relative;
+}
+.reviewSwipe-section .containerCards {
+    position: relative;
+    height: 100%;
 }
 
 .reviewSwiper, .petSwiper  {
@@ -222,7 +259,13 @@ option {
     display: flex;
 }
 
-.petSwipe-section h2 {
+.reviewSwipe-section .reviewCard {
+    background-color: var(--light);
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.petSwipe-section h2, #adoptPage section h2  {
     text-align: center;
     margin-bottom: 1em;
     font-size: 36px;
@@ -238,19 +281,17 @@ option {
     position: relative;
     width: 100%;
     height: 100%;
-}
+    cursor: grab;
+    }
 
-.card, #eventBox div {
+.card {
     border-radius: 25px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    background-color: #46A8A0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.reviewSwipe-section .reviewSwiper .card, #eventBox div {
-    background-color: #FFFFFF;
-}
 .card .image-content {
     padding: 25px 0;
     display: flex;
@@ -259,7 +300,7 @@ option {
 }
 .card .card-content {
     padding: 10px 14px 20px 14px;
-    background-color: #ffffff;
+    background-color: var(--light);
     border-radius: 25px;
 
 
@@ -284,8 +325,8 @@ figure {
     right: auto;
 }
 #button-next, #button-prev {
-    color: #FFFFFF;
-    background-color: #46A8A0;
+    color: var(--light);
+    background-color: var(--theme);
     width: 60px;
     height: 60px;
     font-size: 24px;
@@ -353,7 +394,7 @@ figure {
 }
 
 .reviewSwipe-section button span {
-    color: #FFFFFF;
+    color: var(--light);
     mix-blend-mode: exclusion;
 }
 
@@ -379,7 +420,7 @@ figure {
     opacity: 1;
 }
 .swiper-pagination-bullet-active{
-    background-color: #46A8A0;
+    background-color: var(--theme);
 }
 .reviewSwipe .container {
     display: flex;
@@ -395,10 +436,11 @@ figure {
 
 .info {
     margin-top: 8.125em;
+    margin-bottom: 8.125em;
 }
 
 .info .container {
-    background-color: #46A8A0;
+    background-color: var(--theme);
     border-radius: 40px;
 
 }
@@ -408,7 +450,7 @@ dialog#reviewDialog {
     margin: auto;
     padding: 1em 2em;
     max-width: 31.25em;
-    background-color: #46A8A0;
+    background-color: var(--theme);
     border: none;
 }
 
@@ -416,15 +458,15 @@ dialog#reviewDialog {
     background-color: rgb(0,0,0, 0.4);
 }
 
-dialog#reviewDialog h1 {
-    border-bottom: 1px solid #FFFFFF;
+dialog#reviewDialog h2 {
+    border-bottom: 1px solid var(--light);
     font-size: 3em;
     font-weight: 600;
     margin: 0 0 1em 0;
 }
 
-dialog#reviewDialog h1, dialog#reviewDialog label span {
-    color: #FFFFFF;
+dialog#reviewDialog h2, dialog#reviewDialog label span, dialog#reviewDialog legend span  {
+    color: var(--light);
 }
 
 dialog#reviewDialog form > div {
@@ -448,24 +490,32 @@ dialog#reviewDialog form > div:last-of-type {
 
 }
 
-dialog#reviewDialog label > span.field-label {
+legend {
+    padding-inline-start: 0;
+}
+
+dialog#reviewDialog label > span.field-label, dialog#reviewDialog legend span.field-label{
     display: block;
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: bold;
+}
+
+dialog#reviewDialog div input, dialog#reviewDialog textarea, dialog#reviewDialog fieldset{
+    border: none;
+    font-weight: bold;
+
+    height: 50px;
+    color: var(--theme);
 }
 
 dialog#reviewDialog div input, dialog#reviewDialog textarea {
-    background-color: rgba(249, 235, 255, 0.15);
+    background-color: var(--light);
     border-radius: 25px;
-    border: none;
-    font-weight: 300;
-    height: 50px;
     padding: 0 20px;
-    color: #FFFFFF;
 }
 
 dialog#reviewDialog div input::placeholder, dialog#reviewDialog textarea::placeholder {
-    color: #FFFFFF;
+    color: var(--theme);
 }
 
 dialog#reviewDialog div textarea{
@@ -474,9 +524,105 @@ dialog#reviewDialog div textarea{
     padding: 20px;
 }
 
+#eventBox {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1em;
+}
+
+.reviewCard {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    width: 80%;
+    height: 20em;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0 ,0 ,0.1);
+}
+.reviewCard .cardImg {
+    width: 50%;
+    overflow: hidden;
+    border-radius: 10px 0 0 10px;
+    position: relative;
+}
+.reviewCard .cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.reviewCard .cardImg span {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 5px 20px;
+    background: var(--light);
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.reviewCard .cardBody {
+    width: 50%;
+    min-height: 100%;
+    height: auto;
+    margin-left: 10px;
+    position: relative;
+    padding-bottom: 50px;
+}
+.reviewCard .cardBody p {
+     font-size: 20px;
+     line-height: 30px;
+     margin-top: 30px;
+}
+
+.reviewCard .cardBody .stars {
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    bottom: 10px;
+    left: 0;
+    display: flex;
+}
+
+.reviewCard .cardBody .star {
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3EEmpty%20Star%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23D5D5D5%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: cover;
+    overflow: hidden;
+}
+.reviewCard .cardBody .stars .halfStar {
+    position: relative;
+    display: inline-block;
+}
+.reviewCard .cardBody .stars .halfStar:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 52.5%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3ESolid%20Star%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23FEC844%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+
+}
+
+.reviewCard .cardBody .stars .fullStar {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3ESolid%20Star%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23FEC844%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
 .accordion {
     margin-top: -2.5em;
-    background-color: #46A8A0;
+    background-color: var(--theme);
     border-radius: 40px;
     padding: 2.5em 3.125em 3.125em 3.125em;
 
@@ -488,7 +634,7 @@ dialog#reviewDialog div textarea{
 }
 
 .accordion-item {
-    background-color: #ffffff;
+    background-color: var(--light);
     border-radius: 40px;
     margin-bottom: 30px;
 }
@@ -509,8 +655,8 @@ dialog#reviewDialog div textarea{
 h3.accordion-header button {
     padding: 0.94em 1.56em;
     font-family: 'Poppins';
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .accordion-item h3 .accordion-button::after {
@@ -521,8 +667,8 @@ h3.accordion-header button {
     height: 30px;
     line-height: 30px;
     border-radius: 50%;
-    background-color: #46A8A0;
-    color: #ffffff;
+    background-color: var(--theme);
+    color: var(--light);
     margin-left: auto;
 }
 .accordion-item h3.active .accordion-button::after {
@@ -533,19 +679,24 @@ h3.accordion-header button {
     border-radius: 40px;
 }
 .accordion-item h3.active .accordion-button{
-    color: #46A8A0;
-    background-color: #ffffff;
+    color: var(--theme);
+    background-color: var(--light);
 }
 .collapse {
-    background-color: #ffffff;
+    background-color: var(--light);
     border-radius: 40px;
 }
 
 .accordion-body {
     padding: 0 1.56em 1.87em 1.56em;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 28px;
-    color: #4a4a4a;
+    color: var(--dark);
+}
+.accordion-body p{
+
+    font-size: 16px;
+    line-height: 28px;
 }
 
 .collapse {
@@ -553,110 +704,36 @@ h3.accordion-header button {
 }
 
 #reviews {
-    min-height: 27.2em;
+    min-height: 20.7em;
+    margin: 7em 0 7em 0;
 }
 
 footer {
-    margin-top: 7.5em;
+    margin-top: auto;
     width: 100%;
     height: 7em;
-    background-color: #46A8A0;
+    background-color: var(--theme);
     vertical-align: middle;
-
     border-radius: 150px 150px 0 0;
 }
 footer .sitemap {
     margin: 0 1em;
 }
 
-footer h1 {
+footer h2 {
     font-size: 2rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--light);
     font-weight: 600;
     padding-right: 80px;
 }
-
-
-@media (min-width: 768px) {
-    .container, .containerCards {
-        max-width: 45em;
-    }
-    header h1 {
-        margin-right: 11.02%;
-    }
-    .searchBar {
-        top: 28.02em;
-    }
-
-
-}
-
-
-@media (max-width: 992px) {
-
-    .banner, .reviewSwipe-section {
-        padding-top: 7.8em;
-    }
-    .info {
-        margin-top: 6.25em;
-    }
-    .accordion {
-        padding: 2.5em 1.6em 0.625em 1.6em;
-    }
-
-}
-@media (min-width: 992px) {
-    .container, .containerCards {
-        max-width: 60em;
-    }
-
-    header h1 {
-        margin-right: 18.17%;
-    }
-    .searchBar {
-        top: 30.85em;
-    }
-
-
-}
-
-@media (min-width: 1200px) {
-    .container, .containerCards  {
-        max-width: 71.25em;
-    }
-    header h1 {
-        margin-right: 21.61%;
-    }
-
-    .banner .container {
-        padding: 16em 9.375em 4.6em 3.125em;
-    }
-    .searchBar {
-        top: 34.35em;
-    }
-
-}
-
-@media (min-width: 1400px) {
-    .container, .containerCards {
-        max-width:82.5em
-    }
-    header h1 {
-        margin-right: 24.12%;
-    }
-
-}
-
 .ratingControl {
     position: relative;
     width: 100%;
     height: 65px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-    padding: 40px;
+    padding: 0;
+    margin-bottom: 2.5em;
 }
 .ratingControl input {
     visibility: hidden;
@@ -679,7 +756,7 @@ footer h1 {
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3ESolid%20Star%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23FEC844%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 .ratingControl-stars:active, .ratingControl-stars:active ~ .ratingControl-stars, input:checked ~ .ratingControl-stars:active {
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3ESolid%20Star%20%E2%80%93%20Light%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23FFE39C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2215px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2015%2014%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Ctitle%3ESolid%20Star%20%E2%80%93%20Light%3C%2Ftitle%3E%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Order-Details---Order-final---Not-reviewed%22%20transform%3D%22translate%28-108.000000%2C%20-385.000000%29%22%20fill%3D%22%23FFE39C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Group%22%20transform%3D%22translate%28108.000000%2C%20316.000000%29%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate%280.000000%2C%2069.000000%29%22%20id%3D%22Star-7%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20points%3D%227.5%2011.25%203.09161061%2013.5676275%203.93353806%208.65881373%200.367076128%205.18237254%205.2958053%204.46618627%207.5%200%209.7041947%204.46618627%2014.6329239%205.18237254%2011.0664619%208.65881373%2011.9083894%2013.5676275%20%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E ");
 }
 
 .ratingControl-stars--05, .ratingControl-stars--1 {
@@ -705,3 +782,238 @@ footer h1 {
 .ratingControl-stars--half {
     width: 34px;
 }
+#adoptPage header::before, #detailPage header::before {
+    height: 400%;
+    top: -5em;
+}
+#adoptPage section:first-of-type {
+    margin-top: 18em;
+    margin-bottom: 15em;
+}
+#adoptPage .searchContainer {
+    height: 38em;
+    background-color: var(--theme);
+    border-radius: 25px;
+}
+
+#adoptPage .searchContainer form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 10px 25px 10px;
+}
+
+#adoptPage .searchContainer * {
+    border: none;
+}
+#adoptPage .searchContainer .button {
+    width: 100%;
+
+}
+
+#adoptPage .searchContainer select, #adoptPage .searchContainer button {
+    width: 100%;
+}
+
+#adoptPage .searchContainer select {
+    background-color: var(--light);
+    color: var(--theme);
+}
+
+#adoptPage .searchContainer select option, #adoptPage .searchContainer .button button {
+    color: var(--theme);
+}
+
+
+#adoptPage section .container{
+    display: flex;
+}
+
+#adoptPage .petContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-left: 1.5em;
+}
+
+#adoptPage .petContainer .petCard, #homePage .cards .petCard {
+    width: 32%;
+    flex: 0 0 auto;
+    position: relative;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    background-color: var(--theme);
+}
+#homePage .cards .petCard {
+    height: auto;
+}
+
+.petContainer .petCard .petMedia, #homePage .cards .petCard .petMedia {
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 25px;
+}
+
+.petContainer .petCard img, #homePage .petCard .petMedia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.petContainer .petCard .petBody, #homePage .petCard .petBody{
+    width: 100%;
+    border-radius: 25px;
+    padding: 15px 30px 15px 30px;
+    background-color: var(--theme);
+    text-align:center ;
+
+}
+
+.overlay-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .container, .containerCards {
+        max-width: 45em;
+    }
+    header h2 {
+        margin-right: 11.02%;
+    }
+    .searchBar {
+        top: 28.02em;
+    }
+    .reviewCard {
+        width: 100%;
+        height: 20em;
+    }
+    .reviewCard .cardBody .stars {
+        height: 23%;
+    }
+
+    #adoptPage .container .searchContainer {
+        width: 40%;
+    }
+    #adoptPage .container .petContainer {
+        width: 60%;
+    }
+    #adoptPage .container .petContainer .petCard {
+        width: 100%
+    }
+    .reviewSwiper .reviewCard .cardBody .stars {
+        height: 19%;
+    }
+
+
+}
+
+
+@media (max-width: 992px) {
+
+    .banner, .reviewSwipe-section {
+        padding-top: 7.8em;
+    }
+    .info {
+        margin-top: 6.25em;
+    }
+    .accordion {
+        padding: 2.5em 1.6em 0.625em 1.6em;
+    }
+
+}
+@media (min-width: 992px) {
+    .container, .containerCards {
+        max-width: 60em;
+    }
+
+    header h2 {
+        margin-right: 21%;
+    }
+    .searchBar {
+        top: 30.85em;
+    }
+
+    .reviewCard {
+        width: 48%;
+        height: 15em;
+    }
+    .reviewCard .cardBody .stars {
+        height: 20%;
+    }
+    #adoptPage .container .searchContainer {
+        width: 30%;
+    }
+    #adoptPage .container .petContainer {
+        width: 70%;
+    }
+
+    #adoptPage .container .petContainer .petCard {
+        width: 45%
+    }
+
+
+
+}
+
+@media (min-width: 1200px) {
+    .container, .containerCards  {
+        max-width: 71.25em;
+    }
+    header h2 {
+        margin-right: 25%;
+    }
+
+    .banner .container {
+        padding: 16em 9.375em 4.6em 3.125em;
+    }
+    .searchBar {
+        top: 34.35em;
+    }
+    .reviewCard {
+        width: 48%;
+    }
+    .reviewCard .cardBody .stars {
+        height: 25%;
+    }
+    #adoptPage .container .searchContainer {
+        width: 25%;
+    }
+    #adoptPage .container .petContainer {
+        width: 75%;
+    }
+
+    #adoptPage .container .petContainer .petCard {
+        width: 33%;
+    }
+
+
+}
+
+@media (min-width: 1400px) {
+    .container, .containerCards {
+        max-width:82.5em
+    }
+    header h2 {
+        margin-right: 28%;
+    }
+
+    .reviewCard {
+        width: 30%;
+    }
+    .reviewCard .cardBody .stars {
+        height: 17%;
+    }
+
+
+}
+
+

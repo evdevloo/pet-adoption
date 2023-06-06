@@ -4,48 +4,43 @@ import {data} from "./reviews.js";
 
 (function() {
 
-    data();
+    document.querySelector('.reviewSwipe-section .containerHeader button').addEventListener('click', ()=> {
+        document.querySelector('#reviewDialog').showModal();
+    });
 
-    // selecteer je form
+    data("#eventBox");
+    data(".cards");
+
     const form = document.querySelector('#reviewForm');
     if (!form) {
         return;
     }
-    // wat als form undefined is?
-    // is het dan verstandig om verder te gaan? ... HINT!
 
-    // maak een nieuwe instantie van FormValidator
     const validator = new FormValidator(form);
 
     validator.addValidator({
-        // name verwijst naar het name attribute op het formulierveld
         name: 'firstname',
-        // method ontvangt het inputveld als argument en returnt true of false
         method: (field) => field.value.trim().length > 0,
         message: 'Voornaam is een verplicht veld en werd niet ingevuld'
     })
 
     validator.addValidator({
-        // name verwijst naar het name attribute op het formulierveld
         name: 'lastname',
-        // method ontvangt het inputveld als argument en returnt true of false
         method: (field) => field.value.trim().length > 0,
         message: 'familienaam is een verplicht veld en werd niet ingevuld'
     })
 
     validator.addValidator({
-        // name verwijst naar het name attribute op het formulierveld
         name: 'message',
-        // method ontvangt het inputveld als argument en returnt true of false
         method: (field) => field.value.trim().length >= 0,
         message: 'Incorrecte text'
 
     })
 
     validator.addValidator({
-        name: 'score',
-        method: field => field.value.trim().match(/^[0-9]+$/),
-        message: 'Je moet de review een score geven en het moet een getal zijn',
+        name: 'rating',
+        method: (field) => field.value.trim().length,
+        message: 'Je moet een rating geven',
     })
 
     validator.addValidator({
@@ -55,14 +50,10 @@ import {data} from "./reviews.js";
     })
 
 
-
-
-
-
     form.addEventListener('submit', async function(event) {
-        // niet vergeten!
-        // anders: page refresh
+
         event.preventDefault()
+        console.log(validator.validators.filter(obj => { return obj.name === "rating"} )[0].field.value);
 
         console.log('Submit gelukt! Geen errors!')
 
@@ -71,8 +62,8 @@ import {data} from "./reviews.js";
             body: JSON.stringify({
                 firstName: document.getElementById("firstname").value,
                 lastName: document.getElementById("lastname").value,
-                message:document.getElementById("message").value,
-                rating: document.getElementById("score").value,
+                message: document.getElementById("message").value,
+                rating: validator.validators.filter(obj => { return obj.name === "rating"} )[0].field.value,
             }),
             headers: {
                 "content-type": "application/json",
@@ -82,11 +73,13 @@ import {data} from "./reviews.js";
         if (res.ok) {
             document.querySelector('dialog#reviewDialog').close();
             document.querySelector('#eventBox').innerHTML = "";
-            data();
+            await data();
 
         } else {
             alert("Something went wrong while submitting the form!");
         }
     })
+
+
 })()
 

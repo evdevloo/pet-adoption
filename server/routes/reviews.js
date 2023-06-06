@@ -1,9 +1,11 @@
 // routes/reviews.js
 
 import express from 'express';
-import { getAllReviews,
+import {
+    getAllReviews,
     createReview,
-    getReview
+    getReview,
+    randomReview
 } from '../controllers/reviews.js';
 
 const router = express.Router();
@@ -13,7 +15,11 @@ router.route('/')
     .post(createReview);
 
 router.route('/:id')
-    .get(getReview)
+    .get(getReview);
+
+router.route('/v2/random/:count')
+    .get(randomReview);
+
 
 
 // Add more review routes and corresponding controller functions
